@@ -1,23 +1,26 @@
-#bootstrap-table.mvc (C# / MVC) [![nuget package](https://img.shields.io/nuget/v/bootstrap-table.mvc.png?style=flat-square)](https://www.nuget.org/profiles/simonray)
+#bootstrap-table.mvc.core (C# / ASP.NET Core MVC) [![nuget package](https://img.shields.io/nuget/v/bootstrap-table.mvc.core.png?style=flat-square)](https://www.nuget.org/profiles/techartdev)
 
-A fluent Html helper for the popular [bootstrap-table](https://github.com/wenzhixin/bootstrap-table) plug-in.
+A ASP.NET Core fluent Html helper for the popular [bootstrap-table](https://github.com/wenzhixin/bootstrap-table) plug-in.
+
+Port of the original [bootstrap-table.mvc](https://github.com/simonray/bootstrap-table.mvc) to .NET Core.
 
 To install, run the following command in the Package Manager Console.
 
+
 ```csharp
-Install-Package bootstrap-table.mvc
+Install-Package bootstrap-table.mvc.core
 ```
 
 ## Configuration
-Add the following css
+Add the following css to your project
 
 ```css
-<link href="~/Content/bootstrap-table.min.css" rel="stylesheet" />
+<link href="bootstrap-table.min.css" rel="stylesheet" />
 ```
 
-and script to your project
+Add the following js to your project
 ```css
-<script src="~/Scripts/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="bootstrap-table.min.js"></script>
 ```
 >
 
@@ -30,12 +33,14 @@ You're now ready to start using bootstrap-table.
     .Apply(m => m.Id, ColumnOption.align_center))
 ```
 
-![Alt text](http://s7.postimg.org/eo5ve0ukr/screenshot.png "screenshot")
-
-## Examples
-[Download](http://github.com/simonray/bootstrap-table.mvc/zipball/master/)
-
 ## Change Log
+
+#### 2.0.0 (23/04/24)
+* Upgrade to latest [bootstrap-table](https://github.com/wenzhixin/bootstrap-table)
+* Ported to .NET Core
+* Fixed TagBuilder and HtmlHelper
+* Updated build targets to .NET Standard 2.1, .NET 6 and .NET 8
+* Recreated sample web application in .NET 8
 
 #### 1.1.1 (22-02-15)
 * Set column title as split camel-case.

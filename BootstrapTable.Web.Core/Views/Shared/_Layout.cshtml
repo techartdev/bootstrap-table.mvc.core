@@ -4,12 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BootstrapTable.Web.Core</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/BootstrapTable.Web.Core.styles.css" asp-append-version="true" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/bootstrap-theme.min.css" rel="stylesheet" />
+
+
     <link href="~/lib/font-awesome.min.css" rel="stylesheet" />
     <link href="~/css/simple-sidebar.css" rel="stylesheet" />
+    <link href="~/lib/bootstraptable/bootstrap-table.min.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -26,17 +28,17 @@
     </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstraptable/bootstrap-table.min.js"></script>
+    <script src="~/lib/bootstraptable/extensions/export/bootstrap-table-export.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
-    
+
     <script>
         $("#menu-toggle").click(function (e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });
     </script>
-    </body>
+</body>
 </html>

@@ -9,10 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.md = readme.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootstrapTable", "BootstrapTable\BootstrapTable.csproj", "{0A4B55AE-0D0B-42C8-8CFF-91ECDFBA50BF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootstrapTable.Web", "BootstrapTable.Web\BootstrapTable.Web.csproj", "{D12A8A76-1F0A-4EA2-860B-49C382A2686C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootStrapTable.Core", "BootStrapTable.Core\BootStrapTable.Core.csproj", "{058D2574-7E17-4DC6-9C7E-B1699B754BD3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootstrapTable.Web.Core", "BootstrapTable.Web.Core\BootstrapTable.Web.Core.csproj", "{2AC0EEF7-FFDC-4C6C-943F-24C1BE30D80C}"
@@ -23,14 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0A4B55AE-0D0B-42C8-8CFF-91ECDFBA50BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A4B55AE-0D0B-42C8-8CFF-91ECDFBA50BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A4B55AE-0D0B-42C8-8CFF-91ECDFBA50BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A4B55AE-0D0B-42C8-8CFF-91ECDFBA50BF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D12A8A76-1F0A-4EA2-860B-49C382A2686C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D12A8A76-1F0A-4EA2-860B-49C382A2686C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D12A8A76-1F0A-4EA2-860B-49C382A2686C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D12A8A76-1F0A-4EA2-860B-49C382A2686C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{058D2574-7E17-4DC6-9C7E-B1699B754BD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{058D2574-7E17-4DC6-9C7E-B1699B754BD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{058D2574-7E17-4DC6-9C7E-B1699B754BD3}.Release|Any CPU.ActiveCfg = Release|Any CPU

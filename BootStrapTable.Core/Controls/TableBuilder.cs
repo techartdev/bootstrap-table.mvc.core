@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Text.Encodings.Web;
+using System.Web;
 using BootStrapTable.Core.Helpers;
 using BootStrapTable.Core.Support;
 using Microsoft.AspNetCore.Html;
@@ -19,20 +21,9 @@ namespace BootStrapTable.Core.Controls
         ///<exclude/>
         private readonly List<TagBuilder> _columns = new List<TagBuilder>();
 
-        public readonly List<string> _columnNames = new List<string>();
+        private readonly List<string> _columnNames = new List<string>();
         ///<exclude/>
         private TagBuilder _currentColumn = null;
-
-        #region IHtmlString
-        /// <inheritDoc/>
-        public HtmlString ToHtmlString()
-        {
-            var thead = new TagBuilder("thead");
-            _columns.ForEach(column => thead.InnerHtml.Append(column.ToString()));
-            _builder.InnerHtml.Append(thead.ToString());
-            return new HtmlString(_builder.InnerHtml.ToString());
-        }
-        #endregion
 
         /// <inheritDoc/>
         public TableBuilder(string id = null, string url = null, TablePaginationOption? sidePagination = TablePaginationOption.none, object htmlAttributes = null)
@@ -50,7 +41,7 @@ namespace BootStrapTable.Core.Controls
             if (!string.IsNullOrEmpty(url))
                 Apply(TableOption.url, url);
 
-            _builder.MergeAttributes(Extensions.HtmlAttributesToDictionary(htmlAttributes));
+            _builder.MergeAttributes(htmlAttributes.HtmlAttributesToDictionary());
 
             Apply(TableOption.toggle);
         }
@@ -58,14 +49,14 @@ namespace BootStrapTable.Core.Controls
         /// <inheritDoc/>
         public ITableBuilder ApplyToColumns(ColumnOption option)
         {
-            _columns.ForEach(s => ApplyToColumn(s.InnerHtml.ToString(), option.FieldName(), option.FieldValue() ?? Extensions.ToStringLower(true)));
+            _columns.ForEach(s => ApplyToColumn(s, option.FieldName(), option.FieldValue() ?? true.ToStringLower()));
             return this;
         }
 
         /// <inheritDoc/>
         public ITableBuilder Columns(params string[] columns)
         {
-            Extensions.ForEach(columns, s => Column(Extensions.SplitCamelCase(s), s));
+            columns.ForEach(s => Column(s.SplitCamelCase(), s));
             return this;
         }
 
@@ -89,7 +80,7 @@ namespace BootStrapTable.Core.Controls
             column.Attributes.Add(ColumnOption.field.FieldName(), field);
             if (sortable)
             {
-                column.Attributes.Add(ColumnOption.sortable.FieldName(), Extensions.ToStringLower(sortable));
+                column.Attributes.Add(ColumnOption.sortable.FieldName(), sortable.ToStringLower());
                 column.Attributes.Add(ColumnOption.sorter.FieldName(), sorter);
             }
             column.InnerHtml.SetContent(title);
@@ -127,7 +118,20 @@ namespace BootStrapTable.Core.Controls
                 throw new ArgumentNullException(nameof(encoder));
             }
 
-            writer.Write(_builder.InnerHtml.ToString());
+            var thead = new TagBuilder("thead");
+
+            _columns.ForEach(column => thead.InnerHtml.AppendHtml(GetString(column)));
+            _builder.InnerHtml.AppendHtml(HttpUtility.HtmlDecode(GetString(thead)));
+
+            string table = GetString(_builder, encoder);
+            writer.Write(table);
+        }
+
+        public static string GetString(IHtmlContent content, HtmlEncoder encoder = null)
+        {
+            using var writer = new StringWriter();
+            content.WriteTo(writer, encoder ?? HtmlEncoder.Default);
+            return writer.ToString();
         }
     }
 }

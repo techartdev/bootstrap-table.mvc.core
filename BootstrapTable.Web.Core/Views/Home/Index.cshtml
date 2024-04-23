@@ -13,23 +13,20 @@
 
 
 <p>and script to your project</p>
-@("<script src=\"bootstrap-table/bootstrap-table.min.j\"></script>")
+<code>@("<script src=\"bootstrap-table.min.js\"></script>")</code>
 
 <h3>Usage</h3>
 <p>You're now ready to start using bootstrap-table...</p>
 
-<code>@(@"@(Html.BootstrapTable<Person>
-(Url.Action(""GetPeoplePaged""), TablePaginationOption.server)
-.Apply(TableOption.striped)
-.Apply(m => m.Id, ColumnOption.align_center)")</code>
-    
+<code>
+    @(@"@(Html.BootstrapTable<Person>
+    (Url.Action(""GetPeoplePaged""), TablePaginationOption.server)
+    .Apply(TableOption.striped)
+    .Apply(m => m.Id, ColumnOption.align_center)")
+</code>
+
 
 @(Html.BootstrapTable<Person>(Url.Action("GetPeoplePaged"), TablePaginationOption.server)
     .Apply(TableOption.pageSize, 5)
     .Apply(TableOption.striped)
     .Apply(m => m.Id, ColumnOption.align_center))
-
-
-
-
-

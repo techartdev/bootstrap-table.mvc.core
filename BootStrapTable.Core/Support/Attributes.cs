@@ -26,14 +26,14 @@ namespace BootStrapTable.Core.Support
         public static string FieldName(this Enum value)
         {
             var attr = value.GetType().GetField(value.ToString()).GetCustomAttribute<NameFieldAttribute>();
-            return attr != null ? attr.Name : null;
+            return attr?.Name;
         }
 
         /// <exclude/>
         public static string FieldValue(this Enum value)
         {
             var attr = value.GetType().GetField(value.ToString()).GetCustomAttribute<ValueFieldAttribute>();
-            return attr != null ? attr.Value : null;
+            return attr?.Value;
         }
     }
 }

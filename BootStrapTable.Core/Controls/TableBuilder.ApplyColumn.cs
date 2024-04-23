@@ -29,7 +29,7 @@ namespace BootStrapTable.Core.Controls
         /// <exclude/>
         public IColumnBuilder Apply(ColumnOption option, object[] value)
         {
-            return ApplyToColumn(option.FieldName(), string.Format("[{0}]", string.Join(",", value)));
+            return ApplyToColumn(option.FieldName(), $"[{string.Join(",", value)}]");
         }
 
         /// <exclude/>

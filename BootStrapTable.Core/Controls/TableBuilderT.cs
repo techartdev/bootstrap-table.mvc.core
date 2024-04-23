@@ -12,7 +12,7 @@ namespace BootStrapTable.Core.Controls
     /// <summary>
     /// Build a BootstrapTable control.
     /// </summary>
-    internal partial class TableBuilderT<TModel> : TableBuilder, IColumnBuilderT<TModel>
+    internal class TableBuilderT<TModel> : TableBuilder, IColumnBuilderT<TModel>
     {
         /// <exclude/>
         public TableBuilderT(string id = null, string url = null, TablePaginationOption sidePagination = TablePaginationOption.none, object htmlAttributes = null)

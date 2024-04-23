@@ -1,0 +1,22 @@
+﻿@using BootStrapTable.Core.Helpers
+
+<h4>Exports</h4>
+
+<code>@("@(Html.BootstrapTable<bootstraptable.web.models.person>(Url.Action(\"GetPeoplePaged\"), TablePaginationOption.server)\r\n    .ApplyToTable(\"data-show-export\", \"true\")\r\n  " +
+        "  .Apply(TableOption.buttonsAlign, \"left\")\r\n)\r\n@@section scripts\r\n{\r\n    <script src=\".../bootstrap-table-export.min.js\"></script>\r\n    <script src=\".../tableExport.js\"></script>\r\n  " +
+        "  <script src=\".../jquery.base64.js\"></script>\r\n}")</code>
+<br />
+
+@(Html.BootstrapTable<Person>("tbl", Url.Action("GetPeoplePaged"), TablePaginationOption.server)
+    .ApplyToTable("data-show-export", "true")
+    .Apply(TableOption.buttonsAlign, "left")
+)
+
+
+@section scripts
+{
+    <!-- exports -->
+    <script src="~/Scripts/bootstrap-table/extensions/export/bootstrap-table-export.min.js"></script>
+    <script src="//rawgit.com/kayalshri/tableExport.jquery.plugin/master/tableExport.js"></script>
+    <script src="//rawgit.com/kayalshri/tableExport.jquery.plugin/master/jquery.base64.js"></script>
+}

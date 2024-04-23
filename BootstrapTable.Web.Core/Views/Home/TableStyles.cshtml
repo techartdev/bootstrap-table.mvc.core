@@ -1,0 +1,10 @@
+﻿@using BootStrapTable.Core.Helpers
+
+<code>@("@(Html.BootstrapTable<Person>(Url.Action(\"GetPeopleData\"))\r\n    .Apply(TableOption.showLoading, TableOption.striped)\r\n    .Cease(TableOption.cache)")</code>
+
+<br />
+
+@(Html.BootstrapTable<Person>(Url.Action("GetPeopleData"))
+    .Apply(TableOption.showLoading, TableOption.striped)
+    .Cease(TableOption.cache)
+)

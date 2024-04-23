@@ -1,0 +1,11 @@
+﻿@using BootStrapTable.Core.Helpers
+<div>
+@(Html.BootstrapTable(Url.Action("GetPeopleData"))
+    .Columns("Id", "FirstName", "LastName", "Email"))
+</div>
+<br />
+
+@(Html.BootstrapTable(Url.Action("GetPeopleData"))
+    .Columns("Id", "FirstName", "LastName", "Email")
+)
+

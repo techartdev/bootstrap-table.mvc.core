@@ -1,0 +1,43 @@
+﻿@using BootStrapTable.Core.Helpers
+@using BootStrapTable.Core.Support
+
+
+<div>
+    @("@Html.Code(@<div>\r\n    @@(Html.BootstrapTable(Url.Action(\"GetPeopleData\"))\r\n    .Column(\"Check\").Apply(ColumnOption.checkbox)\r\n    .Columns(\"Id\", \"FirstName\", \"LastName\", \"Email\")\r\n    )\r\n</div>)\r\n<br/>")
+</div>
+
+
+<p>
+@(Html.BootstrapTable("bs-table", Url.Action("GetPeopleData"))
+    .Column("Check").Apply(ColumnOption.checkbox)
+        .Columns("Id", "FirstName", "LastName", "Email")
+)
+</p>
+
+<p>
+    <button id="btnTableAction" class="btn btn-success">Post Selection</button>
+</p>
+
+@section scripts
+{
+    <script>
+        $("#btnTableAction").click(function () {
+            $.ajax({
+                url: '@Url.Action("TableAction", "Home")',
+                data: JSON.stringify( { ids: getSelection() }),
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    alert(response.result);
+                }
+            })
+        });
+
+        function getSelection() {
+            return $.map($('#bs-table').bootstrapTable('getSelections'), function (row) {
+                return row.Id
+            });
+        };
+    </script>
+
+}

@@ -1,0 +1,9 @@
+﻿@using BootStrapTable.Core.Helpers
+
+<code>@("@(Html.BootstrapTable<Person>(Url.Action(\"GetPeopleData\"))\r\n    .Apply(TableOption.showRefresh, TableOption.showToggle, TableOption.showColumns)\r\n)")</code>
+
+<br />
+
+@(Html.BootstrapTable<Person>(Url.Action("GetPeopleData"))
+    .Apply(TableOption.showRefresh, TableOption.showToggle, TableOption.showColumns, TableOption.showPaginationSwitch)
+)

@@ -1,0 +1,14 @@
+﻿@using BootStrapTable.Core.Helpers
+
+<code>@("@(Html.BootstrapTable<person>(Url.Action(\"GetPeoplePaged\"), TablePaginationOption.server)\r\n    .Apply(TableOption.pageSize, 5)\r\n    [... sorting (optional)]")</code>
+
+<br />
+
+@(Html.BootstrapTable<Person>(Url.Action("GetPeopleSearch"), TablePaginationOption.server)
+    .Apply(TableOption.showRefresh, TableOption.search)
+    .Apply(TableOption.pageSize, 5)
+    .Apply(TableOption.sortName, "LastName").Apply(TableOption.sortOrder_desc) //<--- set the default initial table sort
+    .Apply(m => m.Id, ColumnOption.sortable)
+    .Apply(m => m.FirstName, ColumnOption.sortable)
+    .Apply(m => m.LastName, ColumnOption.sortable)
+)

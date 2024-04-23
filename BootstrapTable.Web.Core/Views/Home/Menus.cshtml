@@ -1,0 +1,23 @@
+﻿@using BootStrapTable.Core.Helpers
+
+<code>
+    @("@(Html.BootstrapTable<Person>(Url.Action(\"GetPeopleData\"))\r\n    .Column().Apply(ColumnOption.formatter, \"menuFormatter\")\r\n)\r\n\r\n<script>\r\n    function menuFormatter(value, row, index) {\r\n  " +
+      "      return [\r\n            '@@Ajax.ActionLink(\"Ajax\", \"MenuAction\", new { id = \"-1\", }, new AjaxOptions { }, ...',\r\n            '@@Html.ActionLink(\"Html\", \"MenuAction\", new { Id = \"-1\", }, ...'\r\n     " +
+      "   ].join(' ').replace(/-1/g, row[\"Id\"]);\r\n    }\r\n</script>")
+</code>
+
+<br />
+
+@(Html.BootstrapTable<Person>(Url.Action("GetPeopleData"))
+    .Cease(m => m.Location, ColumnOption.visible)
+    .Cease(m => m.DateOfBirth, ColumnOption.visible)
+    .Column().Apply(ColumnOption.formatter, "menuFormatter")
+)
+
+<script>
+    function menuFormatter(value, row, index) {
+        return [
+            '@(Html.ActionLink("Html", "MenuAction", "Home", new { id = "{0}", }, new { @class = "btn btn-primary btn-small" }))'
+        ].join(' ').replace(/%7B0%7D/g, row["Id"]);
+    }
+</script>

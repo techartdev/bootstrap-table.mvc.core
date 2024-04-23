@@ -1,0 +1,35 @@
+﻿@using BootStrapTable.Core.Helpers
+
+@{
+    ViewData["title"] = "Home Page";
+}
+
+<p>A fluent html helper for the popular <a href="https://github.com/wenzhixin/bootstrap-table">bootstrap-table</a> plug-in.</p>
+
+<h3>Configure</h3>
+<p>Add the following css</p>
+
+<code>@("<link href=\"bootstrap-table.min.css\" rel=\"stylesheet\" />")</code>
+
+
+<p>and script to your project</p>
+@("<script src=\"bootstrap-table/bootstrap-table.min.j\"></script>")
+
+<h3>Usage</h3>
+<p>You're now ready to start using bootstrap-table...</p>
+
+<code>@(@"@(Html.BootstrapTable<Person>
+(Url.Action(""GetPeoplePaged""), TablePaginationOption.server)
+.Apply(TableOption.striped)
+.Apply(m => m.Id, ColumnOption.align_center)")</code>
+    
+
+@(Html.BootstrapTable<Person>(Url.Action("GetPeoplePaged"), TablePaginationOption.server)
+    .Apply(TableOption.pageSize, 5)
+    .Apply(TableOption.striped)
+    .Apply(m => m.Id, ColumnOption.align_center))
+
+
+
+
+

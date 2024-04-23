@@ -1,0 +1,13 @@
+﻿@using BootStrapTable.Core.Helpers
+
+
+<div>
+    @("@(Html.BootstrapTable<Person>(Url.Action(\"GetPeopleData\"))\r\n    .ApplyToColumns(ColumnOption.halign_center)\r\n    .Apply(m => m.Id, ColumnOption.align_center)\r\n    .Cease(m => m.Location, ColumnOption.visible)\r\n)")
+</div>
+<br />
+
+@(Html.BootstrapTable<Person>(Url.Action("GetPeopleData"))
+    .ApplyToColumns(ColumnOption.halign_center)
+    .Apply(m => m.Id, ColumnOption.align_center)
+    .Cease(m => m.Location, ColumnOption.visible)
+)

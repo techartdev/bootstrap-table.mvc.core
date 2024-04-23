@@ -1,0 +1,12 @@
+﻿@using BootStrapTable.Core.Helpers
+
+
+<code>@("@(Html.BootstrapTable<Person>(Url.Action(\"GetPeoplePaged\"), TablePaginationOption.server)\r\n    .Apply(TableOption.pageSize, 5)\r\n)")</code>
+
+<br />
+
+@(Html.BootstrapTable<Person>(Url.Action("GetPeoplePaged"), TablePaginationOption.server)
+    .Apply(TableOption.pageSize, 5)
+)
+
+

@@ -1,0 +1,13 @@
+﻿@using BootStrapTable.Core.Helpers
+
+
+<code>@("@(Html.BootstrapTable<Person>(Url.Action(\"GetPeopleData\")) \r\n    .Apply(TableOption.sortName, \"Id\").Apply(TableOption.sortOrder_desc)\r\n    .Apply(m => m.Id, ColumnOption.sortable)\r\n    " +
+        ".Apply(m => m.FirstName, ColumnOption.sortable)\r\n    .Apply(m => m.LastName, ColumnOption.sortable)\r\n)")</code>
+<br />
+
+@(Html.BootstrapTable<Person>(Url.Action("GetPeopleData"))
+    .Apply(TableOption.sortName, "Id").Apply(TableOption.sortOrder_desc)
+    .Apply(m => m.Id, ColumnOption.sortable)
+    .Apply(m => m.FirstName, ColumnOption.sortable)
+    .Apply(m => m.LastName, ColumnOption.sortable)
+)

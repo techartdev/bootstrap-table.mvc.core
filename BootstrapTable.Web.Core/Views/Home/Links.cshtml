@@ -1,0 +1,18 @@
+﻿@using BootStrapTable.Core.Helpers
+
+<code>@("@(Html.BootstrapTable<Person>(Url.Action(\"GetPeopleData\"))\r\n    .Apply(m => m.FirstName, ColumnOption.formatter, \"columnFormatter\")\r\n)\r\n\r\n<script>\r\n    function columnFormatter(value, row, index) {\r\n    " +
+        "    return (\"<a href='@@Url.Action(\"MenuAction\", \"Home\", new { id = \"-1\" })'>\" + value + \"</a>\")\r\n            .replace(/-1/g, row[\"Id\"]);\r\n    }\r\n</script>")</code>
+
+<br />
+
+@(Html.BootstrapTable<Person>(Url.Action("GetPeopleData"))
+    .Cease(m => m.Location, ColumnOption.visible)
+    .Apply(m => m.FirstName, ColumnOption.formatter, "columnFormatter")
+)
+
+<script>
+    function columnFormatter(value, row, index) {
+        return ("<a href='@Url.Action("MenuAction", "Home", new { id = "{0}" })'>" + value + "</a>")
+            .replace(/%7B0%7D/g, row["Id"]);
+    }
+</script>
